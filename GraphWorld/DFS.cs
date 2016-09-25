@@ -2,32 +2,32 @@
 
 namespace GraphWorld
 {
-    public class BFS
+    public class DFS
     {
         public static List<Node<T>> GraphTraverse<T>(Graph<T> graph, Node<T> startingNode = null)
         {
-            List<Node<T>> bfsList = new List<Node<T>>();
-            Queue<Node<T>> queue = new Queue<Node<T>>();
+            List<Node<T>> dfsList = new List<Node<T>>();
+            Stack<Node<T>> stack = new Stack<Node<T>>();
             HashSet<T> visited = new HashSet<T>();
+            Node<T> currentNode;
 
             if (startingNode == null)
                 startingNode = graph.Nodes[0];
 
-            queue.Enqueue(startingNode);
+            stack.Push(startingNode);
 
-            while(queue.Count > 0)
+            while (stack.Count > 0)
             {
-                var currentNode = queue.Dequeue();
+                currentNode = stack.Pop();
                 foreach (var node in currentNode.Neighbors)
                 {
                     if (!visited.Contains(node.Data))
-                        queue.Enqueue(node);
+                        stack.Push(node);
                 }
-
                 visited.Add(currentNode.Data);
-                bfsList.Add(currentNode);
+                dfsList.Add(currentNode);
             }
-            return bfsList;
+            return dfsList;
         }
     }
 }
