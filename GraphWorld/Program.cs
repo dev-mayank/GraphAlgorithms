@@ -29,7 +29,22 @@ namespace GraphWorld
                 }
             };
 
-            BFS.GraphTraverse(graph, node2);
+            var bfsList = BFS.GraphTraverse(graph, node2);
+
+            Console.WriteLine("BFS");
+            for (int i = 0; i < bfsList.Count; i++)
+            {
+                Console.Write(bfsList[i].Data + " ");
+            }
+
+            Console.WriteLine("\nDFS");
+
+            var dfsList = DFS.GraphTraverse(graph, node2);
+            for (int i = 0; i < bfsList.Count; i++)
+            {
+                Console.Write(dfsList[i].Data + " ");
+            }
+
             Console.ReadKey();
         }
 
