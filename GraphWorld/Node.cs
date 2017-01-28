@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace GraphWorld
 {
-    public class Node<T>
+    public class Node<T> where T : IComparable
     {
         public T Data { get; set; }
         public List<Node<T>> Neighbors { get; set; }
@@ -27,6 +28,26 @@ namespace GraphWorld
         public void AddNeighbor(Node<T> neighborNode)
         {
             Neighbors.Add(neighborNode);
+        }
+
+        public void AddNeighborWithWeight<Tw>(T data, Tw Weight)
+            where Tw : IComparable
+        {
+            Neighbors.Add(new Node<T>(data));
+        }
+
+        public int CompareTo(object node)
+        {
+            var n = node as Node<T>;
+
+            try
+            {
+                return Data.CompareTo(n.Data);
+            }
+            catch(Exception e)
+            {
+                throw new Exception("Type not supported yet" + e.Message);
+            }
         }
     }
 }

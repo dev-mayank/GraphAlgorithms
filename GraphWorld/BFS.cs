@@ -1,10 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace GraphWorld
 {
     public class BFS
     {
-        public static List<Node<T>> GraphTraverse<T>(Graph<T> graph, Node<T> startingNode = null)
+        public static List<Node<T>> GraphTraverse<T>(UnWeightedGraph<T> graph, Node<T> startingNode = null)
+            where T : IComparable
         {
             List<Node<T>> bfsList = new List<Node<T>>();
             Queue<Node<T>> queue = new Queue<Node<T>>();

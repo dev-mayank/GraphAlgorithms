@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace GraphWorld
 {
@@ -26,6 +27,11 @@ namespace GraphWorld
             _items.Add(item);
             _top++;
             HeapifyUp();
+        }
+
+        public bool IsEmpty()
+        {
+            return !_items.Any();
         }
 
         public T Poll()
