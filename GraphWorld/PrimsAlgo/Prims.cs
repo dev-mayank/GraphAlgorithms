@@ -20,6 +20,7 @@ namespace GraphWorld
 
             while (true)
             {
+                //TODO: Need to optimize this
                 var edgesConnectingCurrentNode = weightedGraph.Edges.Where(
                     edge => edge.NodeOne.Data.CompareTo(currentNode.Data) == 0
                             || edge.NodeTwo.Data.CompareTo(currentNode.Data) == 0).ToList();

@@ -62,13 +62,26 @@ namespace GraphWorld
             graph.AddWeightedEdge(node_D, node_B, 2);
             graph.AddWeightedEdge(node_B, node_T, 4);
 
+            Console.WriteLine("\n Prims \n");
+
             Prims<string, int> prim = new Prims<string, int>();
 
             var mstEdges = prim.GetMST(graph);
 
             foreach (var item in mstEdges)
             {
-                Console.WriteLine(item.NodeOne.Data + " ---- " + item.NodeTwo.Data + "--->  " + item.Weight);
+                Console.WriteLine(item.NodeOne.Data + " ---- " + item.NodeTwo.Data + " --->  " + item.Weight);
+            }
+
+            Console.WriteLine("\n Kruskals \n");
+
+            Kruskals<string, int> kruskal = new Kruskals<string, int>();
+
+            mstEdges = kruskal.GetMST(graph);
+
+            foreach (var item in mstEdges)
+            {
+                Console.WriteLine(item.NodeOne.Data + " ---- " + item.NodeTwo.Data + " --->  " + item.Weight);
             }
 
             Console.ReadKey();
