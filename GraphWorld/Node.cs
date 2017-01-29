@@ -30,12 +30,6 @@ namespace GraphWorld
             Neighbors.Add(neighborNode);
         }
 
-        public void AddNeighborWithWeight<Tw>(T data, Tw Weight)
-            where Tw : IComparable
-        {
-            Neighbors.Add(new Node<T>(data));
-        }
-
         public int CompareTo(object node)
         {
             var n = node as Node<T>;
