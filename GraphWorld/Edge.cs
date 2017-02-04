@@ -17,7 +17,22 @@ namespace GraphWorld
     public class WeightedEdge<T, Tw> : Edge<T>, IComparable
         where Tw : IComparable
     {
-        public Tw Weight { get; private set; }
+        public Tw Weight { get; set; }
+        public T FromNode
+        {
+            get
+            {
+                return NodeOne;
+            }
+        }
+
+        public T ToNode
+        {
+            get
+            {
+                return NodeTwo;
+            }
+        }
 
         public WeightedEdge(T first, T second, Tw weight) : base(first, second)
         {
@@ -30,4 +45,18 @@ namespace GraphWorld
             return Weight.CompareTo(e.Weight);
         }
     }
+
+    public class ConnectedWeightedEdge<T, Tw>
+        where Tw : IComparable
+    {
+        public T ConnectedNode { get; set; }
+        public Tw Weight { get; set; }
+
+        public ConnectedWeightedEdge(T connectedNode, Tw weight)
+        {
+            ConnectedNode = connectedNode;
+            Weight = weight;
+        }
+    }
+
 }

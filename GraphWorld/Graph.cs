@@ -57,4 +57,16 @@ namespace GraphWorld
             Edges.Add(new WeightedEdge<Node<T>, Tw>(nodeA, nodeB, weight));
         }
     }
+
+    public class DirectedGraph<T, Tw>
+        where T : IComparable
+        where Tw : IComparable
+    {
+        public List<DirectedGraphNode<T, Tw>> Nodes { get; set; }
+
+        public void AddDirectedEdge(DirectedGraphNode<T, Tw> nodeA, DirectedGraphNode<T, Tw> nodeB, Tw weight)
+        {
+            nodeA.AddNeighbor(nodeB, weight);
+        }
+    }
 }
