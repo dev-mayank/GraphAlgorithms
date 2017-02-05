@@ -6,10 +6,10 @@ namespace GraphWorld
     {
         static void Main()
         {
-            //Traversal.TraversalDriver.DriverForBfsAndDfs();
-            //Mst.MstDriver.DriverForPrimsAndKruskal();
+            Traversal.TraversalDriver.DriverForBfsAndDfs();
+            Mst.MstDriver.DriverForPrimsAndKruskal();
 
-            //Search.SearchDriver.DriverForDepthFirstSearch();
+            Search.SearchDriver.DriverForDepthFirstSearch();
             MaxFlow.FordFulkersonDriver.Drive();
         }
     }

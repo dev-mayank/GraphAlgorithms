@@ -1,9 +1,5 @@
-﻿using GraphWorld.Search;
-using System;
+﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GraphWorld.MaxFlow
 {
@@ -40,6 +36,8 @@ namespace GraphWorld.MaxFlow
 
             var maxFlow = fordGraph.GetMaxFlow(s, t);
 
+            Console.WriteLine("Max flow :" + maxFlow);
+            Console.ReadKey();
         }
     }
 }

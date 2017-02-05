@@ -18,7 +18,9 @@ namespace GraphWorld.Search
             var current = start;
             foreach (var edge in current.ConnectedEdges)
             {
-                stack.Push(edge);
+
+                if(edge.Weight.CompareTo(weightThreshold) > 0)
+                    stack.Push(edge);
             }
 
             while (stack.Count > 0)
@@ -35,7 +37,7 @@ namespace GraphWorld.Search
                     {
                         if (edge.ConnectedNode.CompareTo(end) == 0)
                         {
-                            path.Push(new WeightedEdge<DirectedGraphNode<T, Tw>, Tw>(current, edge.ConnectedNode, movingEdge.Weight));
+                            path.Push(new WeightedEdge<DirectedGraphNode<T, Tw>, Tw>(current, edge.ConnectedNode, edge.Weight));
                             return path.Reverse().ToList();
                         }
                         else
@@ -46,8 +48,8 @@ namespace GraphWorld.Search
                 }
                 else
                 {
-                    stack.Pop();
-                    path.Pop();
+                    var item = path.Pop();
+                    current = item.FromNode;
                 }
             }
 
